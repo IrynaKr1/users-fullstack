@@ -2,8 +2,17 @@ import { connect } from 'react-redux';
 import BeatLoader from 'react-spinners/BeatLoader';
 import styles from './UsersList.module.sass';
 import defImage from './defaultPhoto.jpg';
+import { useEffect, useState } from 'react';
 
-export const UsersList = ({ users, isFetching, error }) => {
+export const UsersList = ({ isFetching, error }) => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/users')
+      .then(response => response.json())
+      .then(data => console.log('data', data));
+  });
+
   return (
     <>
       <BeatLoader loading={isFetching} />
