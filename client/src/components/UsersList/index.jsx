@@ -10,8 +10,9 @@ export const UsersList = ({ isFetching, error }) => {
   useEffect(() => {
     fetch('http://localhost:5000/api/users')
       .then(response => response.json())
-      .then(data => console.log('data', data));
-  });
+      .then(data => setUsers(data.data))
+      .catch(err => console.log('err', err));
+  }, []);
 
   return (
     <>
@@ -19,7 +20,16 @@ export const UsersList = ({ isFetching, error }) => {
       {error && <div>!!!ERROR!!!</div>}
       <ul>
         {users.map(u => (
-          <li key={u.id}>{JSON.stringify(u)}</li>
+          <li key={u.id}>
+            <img
+              className={styles.userImage}
+              src={
+                u.image ? `http://localhost:5000/images/${u.image}` : defImage
+              }
+              alt={`${u.firstName} ${u.lastName}`}
+            />
+            <p>{JSON.stringify(u)}</p>
+          </li>
         ))}
       </ul>
     </>
