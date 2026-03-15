@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
 
 function fileFilter (req, file, cb) {
   // image/gif, image/jpef, image/png
-  const MIMETYPE_REG_EXP = /^image\/(gif|jpeg|png)$/;
+  const MIMETYPE_REG_EXP = /^image\/(gif|jpeg|png|jpg)$/;
 
   cb(null, MIMETYPE_REG_EXP.test(file.mimetype)); // cb(null, чи_зберігати)
 }

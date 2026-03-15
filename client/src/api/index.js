@@ -5,3 +5,4 @@ const axiosInstance = axios.create({
 });
 
 export const getUsers = () => axiosInstance.get('/users');
+export const deleteUserById = id => axiosInstance.delete(`/users/${id}`);
