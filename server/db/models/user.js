@@ -2,7 +2,7 @@
 
 const { Model } = require('sequelize');
 const { hashSync } = require('bcrypt');
-const { GENDERS } = require('./../../constants');
+const { GENDERS } = require('../../constants');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
